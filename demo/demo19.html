@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript 计时事件</title>
+</head>
+<body>
+	<p>显示一个时钟</p>
+	<p id="demo"></p>
+	<button type="button" onclick="myFunction2()">停止计时</button>
+	<p>单击按钮每1秒出现一个“Hello”警告框。</p>
+	<button type="button" onclick="myFunction1()">点击</button>
+	<p>单击按钮每3秒后出现一个“Hello”警告框。</p>
+	<button type="button" onclick="myFunction3()">click me</button>
+	<script type="text/javascript">
+		function myFunction1(){
+			setInterval(function(){alert("Hello")},1000);
+		}
+
+		var getTime = setInterval(function(){
+			var myDate = new Date();
+			var localTime = myDate.toLocaleTimeString();
+			document.getElementById("demo").innerHTML = localTime;
+		},1000);
+		function myFunction2(){
+			clearInterval(getTime);
+		}
+		function myFunction3(){
+			setTimeout("alert('Hello')",3000);
+		}
+	</script>
+</body>
+</html>

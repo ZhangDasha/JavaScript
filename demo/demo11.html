@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>onmouseout / onmouseover</title>
+</head>
+<body>
+	<div onmouseout="out()" onmouseover="over(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;" id="demo">mouseout / mouseover</div>
+	<script type="text/javascript">
+		function out () {
+			document.getElementById("demo").innerHTML  = "Thank You";
+		}
+		function over(obj){
+			obj.innerHTML = "Hello";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用二维数组实现二级级联下拉菜单</title>
+</head>
+<body>
+    <select id="op1" onchange="changeSelect(this.selectedIndex)">
+        <!-- selectedIndex 属性可设置或返回下拉列表中被选选项的索引号。 -->
+    </select>
+    
+    <select id="op2">
+        
+    </select>
+
+    <script type="text/javascript">
+        var arr1 = ["请选择","河南","陕西"];
+        var arr2 = [
+            ["请选择"],
+            ["信阳","郑州","开封"],
+            ["西安","咸阳","长安"]
+        ];
+        var select1 = document.getElementById('op1');
+        select1.length = arr1.length;
+        for(var i=0;i<arr1.length;i++){
+            select1.options[i].text = arr1[i];
+            select1.options[i].value = arr1[i];
+        }
+
+        function changeSelect(index){
+            var select2 = document.getElementById('op2');
+            select2.length = arr2[index].length;
+            for(var j=0; j<arr2[index].length;j++){
+                select2.options[j].text = arr2[index][j];
+                select2.options[j].value = arr2[index][j];
+            }
+        }
+    </script>
+</body>
+</html>

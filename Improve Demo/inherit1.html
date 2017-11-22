@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承---原型链继承</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Super(){
+			this.val=1;					//实例基本属性
+			this.arr = [6];     //实例引用属性
+			this.fn = function(){
+				return true;
+			}
+		}
+		function Sub(){
+			this.fn = function(){
+				return false;
+			}
+		}
+
+		Sub.prototype = new Super();
+
+		var new1 = new Sub();				//
+		var new2 = new Sub();				//
+		new1.val = 2;							//将new1从Super继承而来的val值进行了修改
+		new1.arr.push(7);
+		console.log(new1.fn());  //false  调用的是自身实例Sub的方法。
+		console.log(new1.val);   //2
+		console.log(new2.val);	 //1	
+		console.log(new1.arr);   //6，7
+
+		new2.val = 3;
+		console.log(new2.val);   //3
+		console.log(new2.arr === new1.arr);   //true
+
+		console.log(Sub.prototype);		//Super {val:1, arr:[6,7],fn:f}   此时的Super已发生改变
+		console.log(Sub.prototype === Super);			//false
+		//获得对象属性和方法
+		/*
+		Object.keys(fn) 返回对象的可枚举属性和方法的名称数组。
+		Object.getOwnPropertyNames(fn) 返回的数组的所有属性(可枚举或不可枚举)直接找到给定对象。
+		*/
+	</script>
+</body>
+</html>

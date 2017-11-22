@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>匿名自调用函数</title>
+</head>
+<body>
+	<p id="demo"></p>
+	<script type="text/javascript">
+		(function(a,d,c){
+			document.getElementById("demo").innerHTML = "这是一个自调用的函数！";
+		})();
+	</script>
+</body>
+</html>

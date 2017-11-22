@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript函数的方法</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//call()
+		var myObject;
+		function myFunction(a,b){
+			return a*b;
+		}
+		myObject = myFunction.call(myObject,2,4);
+		alert(myObject);
+		//apply()
+		var myObject2, myArray;
+		function myFunction2(c,d){
+			return c+d;
+		}
+		myArray = [2,4];
+		myObject2 = myFunction2.apply(myObject2,myArray);
+		alert(myObject2);
+	</script>
+</body>
+</html>

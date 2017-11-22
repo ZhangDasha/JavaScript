@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折半查找--递归</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var binary_search = function(arr,low,high,key){
+			var mid  = Math.floor((low + high)/2)
+			if(low > high){
+				return -1;
+			}
+			if(key == arr[mid]){
+				return mid;
+			}else if(key < arr[mid]){
+				high = mid-1;
+				return binary_search(arr,low,high,key);
+			}else if(key > arr[mid]){
+				low = mid+1;
+				return binary_search(arr,low,high,key);
+			}
+		}
+		var arr = [1,2,3,4,5,6,7,8,9,10,11,23,44,86];
+		alert(binary_search(arr, 0, 13, 10));
+	</script>
+</body>
+</html>

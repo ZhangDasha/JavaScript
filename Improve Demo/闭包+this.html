@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+// 		var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+// 　　　　　　return function(){
+// 　　　　　　　　return this.name;
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// 　　alert(object.getNameFunc()());					//The Window
+
+/*	
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name;
+　　　　　　};
+　　　　}
+　　};
+　　alert(object.getNameFunc()());			//My Object
+*/
+
+
+/*
+			var user ="daSha";		//全局变量
+			var a = {
+			    user:"追梦子",
+			    fn:function(){
+			        console.log(this.user); //追梦子
+			    }
+			}
+			var b = a.fn;
+			b();				//daSha
+			b.apply();		//daSha   当apply与call参数为空时，默认指向window
+			b.call(a);			//追梦子
+			var c = b.bind(a);
+			c();					//追梦子			bind只是绑定，并不会主动触发
+*/
+
+
+
+		var a = 1;
+		(function(){
+			console.log(a);					//undefied
+			var a = 2;
+		})();
+		//匿名自执行函数内访问不到外部的值
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON 字符串转换为 JavaScript 对象</title>
+</head>
+<body>
+	<h2>为 JSON 字符串创建对象</h2>
+	<p id="demo"></p>
+	<script type="text/javascript">
+		var txt = '{"sites":['+
+			'{"name":"daSha","age":100},'+
+			'{"name":"daXiang","age":23},'+
+			'{"name":"daRen","age":45}]}';
+			var json1 = JSON.parse(txt);
+			for(var i=0;i<3;i++){
+				document.getElementById("demo").innerHTML += json1.sites[i].name + json1.sites[i].age+'<br>';
+			}
+	</script>
+	
+</body>
+</html>

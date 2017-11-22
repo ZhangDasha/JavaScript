@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+        function a(pram){
+            this.x  = pram;				//赋值给window下的变量x
+            return this;			//返回this
+        }
+        //函数a返回的this是window对象
+        var x = a(5);
+        var y = a(6);
+        alert(x.x);  //等于window.window
+        alert(y.x);  //等于window.x
+		*/
+		var foo = {n:1};
+		(function (foo){
+			console.log(foo.n);			//输出1
+			foo.n = 3;							//foo指向的内存空间里的n的值被改为3
+			var foo = {n:2};				//形参foo指向了新的内存空间，里面n的值为2.
+			console.log(foo.n);				//输出新的内存空间的n的值
+		})(foo);
+		console.log(foo.n);					//实参foo的指向还是原来的内存空间，里面的n的值为3.
+		// foo是引用类型输出：1，2，3；基本类型输出：1，2，1
+
+	</script>
+</body>
+</html>

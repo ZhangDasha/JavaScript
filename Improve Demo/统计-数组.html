@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>统计数组中重复项</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 思路：hash对象。定义一个对象obj，遍历数组，对象的键为数组的元素，值为出现的次数。
+		// 然后遍历这个对象，找到值为最大的那个。
+		var b = [12,23,32,12,12,43,54,32];
+			function a(arr){
+				if(!arr.length) return;
+				if(arr.length === 1)	return 1;
+				var res = {};			//hash对象
+				for(var i=0;i<arr.length;i++){
+					if(!res[arr[i]]){
+						res[arr[i]] = 1;
+					}else{
+						res[arr[i]]++;
+					}
+				}
+				//遍历res
+				var keys = Object.keys(res);
+				var maxNum = 0,maxEle;
+				for(var i=0,l = keys.length;i<l;i++){
+					if(res[keys[i]]>maxNum){
+						maxNum = res[keys[i]];			
+						maxEle = keys[i];
+					}
+				}
+				return maxEle;
+			}
+		alert(a(b));
+	</script>
+</body>
+</html>

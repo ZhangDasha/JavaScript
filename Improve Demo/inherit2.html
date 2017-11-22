@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承---借用构造函数</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Super(val){
+			this.val = val;
+			this.arr = [1];
+			this.fn = function(){
+				return true;
+			}
+		}
+		function Sub(val){
+			Super.call(this,val);			//核心：调用call改变this的指向,来实现继承
+			// this.fn = function(){
+			// 	return false;
+			// }
+		}
+
+		var sub1 = new Sub(1);
+		var sub2 = new Sub(2);
+
+		sub1.arr.push(2);
+		console.log(sub1.val);    //1
+		console.log(sub2.val);		//2
+
+		console.log(sub1.arr);		//1,2  引用类型arr数组，不再共享。
+		console.log(sub2.arr);		//1
+
+		console.log(sub1.fn());		//false
+	</script>
+</body>
+</html>

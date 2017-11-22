@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实现深度克隆</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//深度克隆
+		function deepClone(obj){
+			var result,oClass = isClass(obj);
+			//确定result类
+			if(oClass == "Object"){
+				result = {};
+			}else if(oClass == "Array"){
+				result =[];
+			}else{
+				return obj;
+			}
+			for(var x in obj){
+				var newObj = obj[x];
+				if(isClass(newObj) == "Object"){
+					result[x] = arguments.callee(newObj);
+				}else if(isClass(newObj) == "Array"){
+					result[x] = arguments.callee(newObj);
+				}else{
+					result[x] = obj[x]
+				}
+			}
+			return result;
+		}
+
+
+		//返回传递给他的任意对象的类
+		function isClass(o){
+			if(o === null) return "Null";
+			if(o === undefined) return "Undefined";
+			// console.log(Object.prototype.toString.call(o));
+			return Object.prototype.toString.call(o).slice(8,-1);  //直接返回对象的类属性,通过字符串截取
+				//call(o)将上下文变为o
+		 }
+
+		 
+		var oPerson={
+		    oName:"rookiebob",
+		    oAge:"18",
+		    oAddress:{
+		        province:"beijing"
+		    },    
+		    ofavorite:[
+		        "swimming",
+		        {reading:"history book"}
+		    ],
+		    skill:function(){
+		        console.log("bob is coding");
+		    }
+		};
+		//深度克隆一个对象
+		var oNew=deepClone(oPerson);
+		 
+		oNew.ofavorite[1].reading="picture";
+		console.log(oNew.ofavorite[1].reading);//picture
+		console.log(oPerson.ofavorite[1].reading);//history book
+		 
+		oNew.oAddress.province="shanghai";
+		console.log(oPerson.oAddress.province);//beijing
+		console.log(oNew.oAddress.province);//shanghai
+	</script>
+</body>
+</html>

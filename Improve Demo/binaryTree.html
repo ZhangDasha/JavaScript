@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建二叉树的链式结构---递归法</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//引用：http://www.cnblogs.com/ghostgift/archive/2013/03/04/2941723.html
+		//以26个字母构建二叉树
+		function Node(){
+			this.text = '';		//节点的文本
+			this.leftChild = null;		//节点的左孩子引用
+			this.rightChild = null;
+		}
+		var charecters = [1,2,3,4,5,6,7,8];
+		
+		function buildTree(node,i){
+			var leftIndex = 2*i+1, rightIndex = 2*i+2;		//左孩子节点的索引
+			if(leftIndex < charecters.length){			//判断索引的长度是否超过了charecters数组的大小
+				var childNode = new Node();				//创建一个新的节点对象
+				childNode.text = charecters[leftIndex];
+				node.leftChild = childNode;				//给当前节点node加入左孩子节点
+				buildTree(childNode,leftIndex);					//递归
+			}
+			if(rightIndex < charecters.length){
+				var childNode = new Node();
+				childNode.text = charecters[rightIndex];
+				node.rightChild = childNode;
+				buildTree(childNode,rightIndex);
+			}
+		}
+		function firstIteration(node) {
+                if(node.leftChild) {                   //判断当前节点是否有左孩子
+                		console.log(node.leftChild);
+                    firstIteration(node.leftChild);    //递归左孩子
+                }
+                if(node.rightChild) {                  //判断当前节点是否有右孩子
+                		console.log(node.rightChild);
+                    firstIteration(node.rightChild);   //递归右孩子
+                }
+            }
+
+		//下面构造二叉树
+     var node = new Node();
+     node.text = charecters[0];
+     buildTree(node, 0);   //索引i是从0开始构建
+
+     
+            //递归遍历二叉树
+            firstIteration(node);
+	</script>
+</body>
+</html>

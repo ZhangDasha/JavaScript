@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件监听</title>
+</head>
+<body>
+	<button type="button" id="btn" >监听</button>
+	<p id="demo"></p>
+	<script type="text/javascript">
+		document.getElementById("btn").addEventListener("click",myFunction);
+		function myFunction () {
+			document.getElementById("demo").innerHTML = Date();
+		}
+	</script>
+</body>
+</html>

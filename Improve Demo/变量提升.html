@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+/*
+	function a(){};
+	var a = 1;			// 等于	var a;	a = 1;
+	//若前面已经定义a，则a会被存入变量表中，当执行var a时，查找变量表已存在a则忽略此行；又因为js是无类型弱语言，所以a=1成立。
+	console.log(a);			// 1
+*/
+	
+/*
+	var a = 1;
+	function a(){};
+	console.log(a);				// 1
+*/
+
+/*
+	var a ;
+	function a(){};
+	//当同时声明变量a和函数a时，函数a优先
+	console.log(a);				//function a
+*/
+
+
+/*
+	function a(){};
+	var a;
+	console.log(a);				//function a
+*/
+
+
+	var a ;
+	function a(){};
+	a = 123;
+	console.log(a);				//123
+	</script>
+</body>
+</html>

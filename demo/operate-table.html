@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格的基本操作</title>
+</head>
+<body>
+	<table border="1" id="myTable">
+		<tr>
+			<td colspan="1">1</td>
+			<td colspan="2">2</td>
+		</tr>
+		<tr>
+			<td>行1 列1</td>
+			<td>行1 列2</td>
+			<td><button type="button" onclick="rowDelete(this)">删除</button></td>
+		</tr>
+		<tr>
+			<td>行2 列1</td>
+			<td>行2 列2</td>
+			<td><button type="button" onclick="rowDelete(this)">删除</button></td>
+		</tr>
+		<tr>
+			<td>行3 列1</td>
+			<td>行3 列2</td>
+			<td><button type="button" onclick="rowDelete(this)">删除</button></td>
+		</tr>
+	</table>
+	<button type="button" onclick="myFunction()">按下</button>
+	<input type="button" onclick="insRow()" value="插入行">
+	<button type="button" onclick="setColspan()">合并单元格</button>
+	<script type="text/javascript">
+		//单个特殊单元格
+		function myFunction(){
+			var x = document.getElementById("myTable").rows[0].cells;
+			x[1].innerHTML = "修改后";
+		}
+		//删除操作
+		function rowDelete(r){
+			var i = r.parentNode.parentNode.rowIndex;
+			//					r.parentNode.parentNode.childNodes[1].style.backgroundColor="red";   // 同类型单元格获取
+			document.getElementById("myTable").deleteRow(i);
+		}
+		//插入行
+		function insRow(){
+			var x = document.getElementById("myTable").insertRow(0);
+			x.insertCell(0).innerHTML = "新单元格1";
+			x.insertCell(1).innerHTML = "新单元格2";
+			x.insertCell(2).innerHTML = "<button type='button' onclick='rowDelete(this)'>删除</button>";
+		}
+		//合并单元格
+		function setColspan(){
+			var x = document.getElementById("myTable").rows[0].cells;
+			x[0].colSpan ="2";
+			x[1].colSpan ="1";
+		}
+	</script>
+</body>
+</html>

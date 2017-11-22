@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var bubbleSorrt = function(arr){
+			for(var i=0;i<arr.length;i++){
+				//每一次比较都会找打最大值并移到数组右边,因此下次比较只需要比前arr.length-1-i次。
+				for(var j=0; j<arr.length-1-i; j++){   
+					if(arr[j] > arr[j+1]){               //相邻元素两两比较
+						var temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp
+					}
+				}
+			}
+			return arr
+		}
+		var a = [21,33,2,45,12,23];
+		alert(bubbleSorrt(a));
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承---原型继承</title>
+</head>
+<body>
+	<!-- 
+			这种继承借助原型并基于已有的对象创建新对象，同时还不用创建自定义类型
+			首先在beget()函数内部创建一个临时性的构造函数 ，然后将传入的对象作为这个构造函数的原型，最后返回这个临时类型的一个新实例。
+	 -->
+	<script type="text/javascript">
+		function Super(){							//父类
+			this.val  = 1;
+			this.arr = [2];
+		}
+		function beget(obj){						//接收父类传递的一个实例，由此创建子函数
+			var F = function (){};
+			F.prototype = obj;
+			return new F();
+		}
+
+		var sup = new Super();
+		var sub = beget(sup);
+
+		//增添功能
+		sub.text1 = "a";
+		sub.text2 = "b";
+
+		console.log(sub.val);				//1
+		console.log(sub.arr);				//[2]
+		console.log(sub.text1);			//a
+		console.log(sub.text2);			//b
+	</script>
+</body>
+</html>

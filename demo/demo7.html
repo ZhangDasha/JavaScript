@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript:void(0)</title>
+</head>
+<body>
+	<a href="javascript:void(0)">单此处什么也不会发生----javascript:viod(0)</a>
+	<p>点击以下链接查看结果：</p>
+	<a href="javascript:void(alert('waring!!!'))">点我</a>
+	<p>点击以下链接查看结果：</p>
+	<form>
+		<button type="button" onclick="getValue()">点我</button>
+	</form>
+	<script type="text/javascript">
+		function getValue(){
+			a = void(b=6,c=9);
+			document.write('a='+a,'b='+b,'c='+c);
+		}
+	</script>
+</body>
+</html>

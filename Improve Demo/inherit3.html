@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承---组合继承</title>
+</head>
+<body>
+	<!-- 
+			思想：使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又保证每个实例都有它自己的属性。
+	 -->
+	<script type="text/javascript">
+		function Super(){
+			// 只在此处声明基本属性和引用属性
+			this.val = 1;
+			this.arr = [1];
+			this.fn4 = function(){
+				return;
+			}
+		}
+		//  在此处声明函数
+		Super.prototype.fn1 = function() {return true;};
+		Super.prototype.fn2 = function() {return false;};
+
+		function Sub(){
+			Super.call(this);   //核心，对象冒充实现继承
+			this.fn3 = function(){
+				return;
+			}
+		}
+
+		Sub.prototype = new Super();    //Sub原型指向Super
+
+		var new1 = new Sub(1);
+		var new2 = new Sub(1);
+
+		console.log(Object.getOwnPropertyNames(new1));    //val,arr,fn4, fn3
+		console.log(Super.prototype);    //fn1,fn2,constructor:Super()
+		console.log(Object.getOwnPropertyNames(Sub.prototype));    //val,arr,fn4 说明Sub只继承了Super的实例属性／方法
+		console.log(new1.fn3() === new2.fn3());    //true
+		console.log(new1.fn1 === new2.fn1);    //true
+		console.log(new1.fn4 === new2.fn4);			//false
+
+		console.log(Sub.prototype);			//Super {val:1,arr:[1],fn:fn4{}}
+		console.log(new1.__proto__)			//super_();{val:1,arr:[1],fn:fn4{}}
+		console.log(new1.__proto__ ===Sub.prototype);    //true   
+
+
+
+
+	</script>
+</body>
+</html>

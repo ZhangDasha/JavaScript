@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 递归-斐波那契数列
+		function* fibs(){			//构造一个生成器函数
+			let a = 0;
+			let b = 1;
+			while(true){
+				yield a;					//yield 关键字用来暂停和继续执行一个生成器函数。
+				[a,b] = [b,a+b];
+			}
+		}
+		let [one,two,three,four,fifer,six] = fibs();
+		console.log(six);
+	</script>
+</body>
+</html>

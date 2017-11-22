@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的arguments对象</title>
+</head>
+<body>
+	<p>查找最大的参数。</p>
+	<!-- 任选一个参考值，每次与其做比较，大则替换 -->
+	<p id="demo"></p>
+	<script type="text/javascript">
+		var x = findMax(1, 123, 500, 115, 44, 88);
+		function findMax () {
+			var i ,max = arguments[0];
+			if(arguments.length < 2) return max;
+			// console.log(arguments.length);
+			for(i=0;i<arguments.length;i++){
+				if(arguments[i] > max)
+					max = arguments[i];
+				// var max1 = arguments[i];
+			}
+			return max; 
+			// alert(max1);
+		}
+		document.getElementById("demo").innerHTML = x;
+	</script>
+</body>
+</html>

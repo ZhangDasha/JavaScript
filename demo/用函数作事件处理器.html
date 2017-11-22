@@ -1,0 +1,20 @@
+<html>
+<head>
+<title> Using function as event handlers</title>
+<script language="JavaScript">
+<!--
+function confirmLink(){
+	alert("The contents of this link may be objrct to anymonre over the age of ten.")
+	if(confirm("Are you ten years old or younger?")){
+		window.location="http://www.sut.ebu.cn"
+	}
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Using function as handlers <h1>
+<p><a href="somewhere" onClick="return false"
+onMouseOver="confirmLink()">Confirms whether you want to connet to via this link </a></p>
+</body>
+</html>

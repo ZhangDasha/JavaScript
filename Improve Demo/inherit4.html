@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承---寄生组合继承</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//只在此处声明基本属性和引用属性
+		function Super(){
+			this.val = 1;
+			this.arr =[1];
+		}
+		Super.prototype.fn1 = function (){return true;};
+		Super.prototype.fn2 = function (){return false;};
+		
+		function Sub(){
+			Super.call(this);    // 核心
+		}
+
+		function beget(obj){    // 生孩子函数 beget
+			var F = function() {};
+			F.prototype = obj;
+			return new F();
+		}
+
+		var proto = beget(Super.prototype);    // 产生一个原型指向Super.prototype的实例。
+		proto.constructor = Sub;    // 	将此实例的构造函数指向Sub
+		Sub.prototype = proto;    // 核心
+
+		var new1 = new Sub();
+		console.log(new1.val);
+		console.log(new1.arr);
+		console.log(new1.fn1());
+		//核心：用beget(Super.prototype);切掉了原型对象上多余的那份父类实例属性
+	</script>
+</body>
+</html>

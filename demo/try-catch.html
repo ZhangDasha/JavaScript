@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript 错误 try catch throw</title>
+</head>
+<body>
+	<button type="button" onclick="myFunction()">错误详情</button>
+	<script type="text/javascript">
+		var txt;
+		function myFunction(){
+			try{
+				addlert('welcome too');
+			}catch(e){
+				txt = "错误详情:"+e.message;
+				alert(txt);
+			}
+		}
+	</script>
+</body>
+</html>

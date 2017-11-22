@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5--drag / drop</title>
+	<style type="text/css">
+		#div1,#div2{
+			float:left; 
+			width:198px; 
+			height:66px;
+			margin:10px;
+			padding:10px;
+			border:1px solid #aaaaaa;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img src="../img/3.jpg" draggable = "true" ondragstart="drag(event)" id="drag1">
+	</div>
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	<script type="text/javascript">
+		//取消事件默认动作
+		function allowDrop(ev){
+			ev.preventDefault();
+		}
+		//拖，获取拖动元素。
+		function drag(ev){
+			ev.dataTransfer.setData("Text", ev.target.id)
+		}
+		//放，将拖动元素添加到放置目标中。
+		function drop(ev){
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("Text");
+			// alert(data);				//drag1
+			ev.target.appendChild(document.getElementById(data));
+		}
+
+	</script>
+</body>
+</html>

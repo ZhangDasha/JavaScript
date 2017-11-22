@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>统计一个字符串中出现最多的字符</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+				var str ="asdfssaaasasasasaa";
+				var json={};  //hash结构
+				for(var i=0,len=str.length;i<len;i++){
+					if(!json[str.charAt(i)]){    //charAt()返回字符串str索引位置i的字符
+						json[str.charAt(i)]=1;
+					}else{
+						json[str.charAt(i)]++;
+					}
+				}
+				var iMax=0;
+				var iIndex='';
+				for(var x in json){
+					if(json[x]>iMax){
+						iMax = json[x];
+						iIndex = x;
+					}
+				}
+				alert("出现最多的字符是:"+iIndex+" 出现的次数是："+iMax);
+	</script>
+</body>
+</html>

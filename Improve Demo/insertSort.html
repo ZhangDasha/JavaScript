@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插入排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var insertSort = function(arr){
+			var len = arr.length;
+			var preIndex,current;
+			for(var i=1; i<len;i++){
+				preIndex = i-1;					//取出第一个值为当前值
+				current = arr[i];					//如果前preIndex大于等于0，且前一个值大于当前值
+				while(preIndex >= 0 && arr[preIndex] > current){  			//递增排列
+					arr[preIndex+1] = arr[preIndex];  					//则将前一个值后移一位
+					preIndex--;
+				}
+				
+				arr[preIndex+1] = current;			//插入
+			}
+			return arr;
+		}
+		var a = [21,33,2,45,12,23];
+		alert(insertSort(a));
+	</script>
+</body>
+</html>

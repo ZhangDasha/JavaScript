@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承----寄生式继承</title>
+</head>
+<body>
+	<!-- 
+		这种继承方式是把原型式+工厂模式结合起来(给原型式穿了一个马甲)
+	 -->
+	 <script type="text/javascript">
+	 	function Super(){
+	 		this.val = 1;
+	 		this.arr = [2];
+	 	}
+	 	function beget(obj){
+	 		var F  = function (){};
+	 		F.prototype = obj;
+	 		return new F();
+	 	}
+
+	 	function getSubObject(obj){
+	 		var clone = beget(obj);		//核心
+	 		clone.text1  = "a";
+	 		clone.text2  = "b";
+	 		return clone;
+	 	}
+
+	 	var sub = getSubObject(new Super());
+
+	 	console.log(sub.val);			//1
+	 	console.log(sub.arr);			//[2]
+	 	console.log(sub.text1);			//a
+	 	console.log(sub.text2);				//b
+	 </script>
+</body>
+</html>

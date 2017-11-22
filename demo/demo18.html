@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript 弹窗</title>
+</head>
+<body>
+	<p>点击按钮</p>
+	<button type="button" onclick="myFunction1()">警告框</button>
+	<button type="button" onclick="myFunction2()">确认框</button>
+	<button type="button" onclick="myFunction3()">提示框</button>
+	<script type="text/javascript">
+		function myFunction1(){
+			alert("你好，我是一个警告框！")
+		}
+		function myFunction2(){
+			var r = confirm("按下按钮!")
+			if(r == true) document.write("你按下了\"确定\"按钮!");
+			else document.write("你按下了\"取消\"按钮!");
+		}
+		function myFunction3(){
+			var person = prompt("请输入你的名字", "Harry Potter");
+			if (person!=null && person != "") {
+				document.write(person+"今天感觉如何?");
+			}
+		}
+	</script>
+</body>
+</html>
