@@ -17,6 +17,13 @@
 		}
 		let [one,two,three,four,fifer,six] = fibs();
 		console.log(six);
+
+		// 尾递归优化过的 Fibonacci 数列
+		function Fibonacci(n,ac1=1,ac2=1){
+			if(n <= 1)	{return ac2;};
+			return Fibonacci(n-1,ac2,ac1+ac2);
+		}
+		console.log(Fibonacci(10));				//89
 	</script>
 </body>
 </html>
