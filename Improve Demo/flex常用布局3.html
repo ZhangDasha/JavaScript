@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左边是定宽 sidebar，右边是上-中-下布局</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			min-height:100vh;
+			display:flex;
+		}
+		aside{
+			flex: none;
+			background: red;
+			width: 20%;
+		}
+		.content{
+			display: flex;
+			flex: auto;
+			flex-direction: column;
+			background: blue;
+			width: 80%;
+		}
+		.content article{
+			flex:auto;
+			background: green;
+		}
+		.content header{
+			height: 80px;
+		}
+		.content footer{
+			height: 80px;
+		}
+	</style>
+</head>
+<body>
+	<aside>Aside</aside>
+	<div class="content">
+		<header>Header</header>
+		<article>Article</article>
+		<footer>Footer</footer>
+	</div>
+</body>
+</html>

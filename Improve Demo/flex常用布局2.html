@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>在上-中-下布局的基础上，加了左侧定宽 sidebar</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			min-height:100vh;
+			display:flex;
+			flex-direction: column;
+		}
+		header{
+			width: 100%;
+			height: 80px;
+			background: red;
+		}
+		.content{
+			width: 100%;
+			background: blue;
+			flex:auto;
+			display: flex;
+		}
+		.content aside{
+			flex:auto;
+			width: 20%;
+		}
+		.content article{
+			flex:auto;
+			width: 80%;
+			background:green;
+		}
+		footer{
+			width: 100%;
+			height: 80px;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<header>Header</header>
+	<div class="content">
+		<aside>Aside</aside>
+		<article>Article</article>
+	</div>
+	<footer>Footer</footer>
+</body>
+</html>

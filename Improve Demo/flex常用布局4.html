@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>还是上-中-下布局，区别是 header 固定在顶部，不会随着页面滚动</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			padding-top: 60px;
+		}
+		header {
+			height: 60px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 0;
+			background: blue;
+		}
+		article{
+			flex:auto;
+			height: 1500px;
+			background: green;
+		}
+		footer{
+			background: yellow;
+			height: 80px;
+		}
+	</style>
+</head>
+<body>
+	<header>Header</header>
+	<article>Article</article>
+	<footer>Footer</footer>
+</body>
+</html>

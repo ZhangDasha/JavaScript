@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左侧 sidebar 固定在左侧且与视窗同高，当内容超出视窗高度时，在 sidebar 内部出现滚动条。左右两侧滚动条互相独立。</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			height: 100vh;
+			display: flex;
+		}
+		aside {
+			flex: none;
+			width: 200px;
+			overflow-y: auto;
+			display: block;
+			background: blue;
+		}
+		.content {
+			flex: auto;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+			background: green;
+		}
+		.content header{
+			height: 80px;
+			background: red;
+		}
+		.content footer{
+			height: 80px;
+			background: yellow;
+		}
+		.content article {
+			flex: auto;
+		}
+	</style>
+</head>
+<body>
+	<aside>
+		ASIDE
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+		<p>item</p>
+	</aside>
+	<div class="content">
+		<header>HEADER</header>
+		<article>CONTENT</article>
+		<footer>FOOTER</footer>
+	</div>
+</body>
+</html>

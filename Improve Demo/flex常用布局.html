@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>经典的上-中-下布局</title>
+	<style type="text/css">
+		body{
+			min-height:100vh;
+			display:flex;
+			flex-direction: column;
+		}
+		header{
+			width: 100%;
+			height: 80px;
+			background: red;
+		}
+		article{
+			width: 100%;
+			background: blue;
+			flex:auto;
+		}
+		footer{
+			width: 100%;
+			height: 80px;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		常用的七个CSS单位
+		1.rem
+			em：单位被定义为当前字体大小。
+			rem：中“r”代表“root”，等同于font-size基于根元素进行设置。
+		2.vh和vw。显示窗口的宽度或高度的比例值。（响应式）
+			vh等于viewport高度的1/100
+			vw等于viewport宽度的1/100
+		3.vmin和vmax
+			vmin和vmax是与这次宽度和高度的最大值或最小值有关，取决于哪个更大和更小。
+		4.ex和ch
+			ex和ch单位，与em和rem相似，依赖于当前字体和字体大小。
+	 -->
+	<header>Header</header>
+	<article>Article</article>
+	<footer>Footer</footer>
+</body>
+</html>
