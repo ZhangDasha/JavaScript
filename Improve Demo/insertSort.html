@@ -6,10 +6,22 @@
 </head>
 <body>
 	<script type="text/javascript">
+		/*
+			插入排序的原理是: 
+				从第二个位置开始, 与前一个元素进行比较,如果当前元素比较小, 则将前一个元素后移,
+				最后将当前元素插入到preIndex+1项。
+				定义两个变量 perIndex 用于记录前一个数下表，current 用于暂存当前值
+
+			性能：
+				最坏情况：O(n^2)
+				最好情况：O(n)
+				平均性能：O(n^2)
+				空间复杂度：O(1)
+		*/
 		var insertSort = function(arr){
 			var len = arr.length;
-			var preIndex,current;
-			for(var i=1; i<len;i++){
+			var preIndex, current;
+			for(var i=1; i<len; i++){
 				preIndex = i-1;					//取出第一个值为当前值
 				current = arr[i];					//如果前preIndex大于等于0，且前一个值大于当前值
 				while(preIndex >= 0 && arr[preIndex] > current){  			//递增排列
@@ -17,7 +29,7 @@
 					preIndex--;
 				}
 				
-				arr[preIndex+1] = current;			//插入
+				arr[preIndex+1] = current;			//归位
 			}
 			return arr;
 		}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function commafy(num){
+      return num && (num
+        .toString().indexOf(".") !== -1 ? num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function($1, $2){
+          return $2+',';
+        }) : num.toString().replace(/(\d)(?=(\d{3}))/g, function($1, $2){
+          return $2+",";
+        }))
+        
+    }
+    console.log(commafy(1234.90));
+    /*
+    function thousandBitSeparator(num) {
+        return num && num
+            .toString()
+            .replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
+                return $1 + ",";
+            });
+    }
+    console.log(thousandBitSeparator(-1234567.9012));
+    */
+  </script>
+</body>
+</html>

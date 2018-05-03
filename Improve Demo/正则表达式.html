@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h3>[]表达式只表示一位字符</h3>
+    <p>\w === [0-9A-z_]</p>
+    <p>\d === [0-9]</p>
+    <p>\s 空白字符 == \n + \f + \r + \t + \v + '空格'</p>
+    <p>\b 单词边界  <mark>一个单词有前后两个单词边界</mark></p>
+    <p>. === [^\r\n]</p>
+    <p>正常的量词匹配是贪婪匹配，能多不少。在量词后面加 ? 可转化为非贪婪匹配</p>
+  </div>
+  <script type="text/javascript">
+    /*字符串的replace方法*/
+    var reg = /(\w)\1(\w)\2/;
+    var str = "aabb";
+    // repace( , )第二个参数必须是字符串
+    console.log(str.replace(reg, "$2$2$1$1"));
+    /*
+    console.log(str.replace(reg, function(第一个参数是匹配的结果，第二个参数是第一个子表达式匹配的内容，第三个参数是第二个子表达式匹配的内容){
+      return ;
+    }))*/
+    console.log(str.replace(reg, function($, $1, $2){
+      return $2 + $2 + $1 + $1+"这是字符串啊";
+    }))
+
+    // 例： the-first-name --->  theFirstName
+    var reg = /-(\w)/g;
+    var str = "the-first-name";
+    console.log(str.replace(reg, function($, $1){
+      return $1.toUpperCase();
+    }))
+
+
+    // 正向断言,不作为匹配结果，只作后缀匹配修饰
+    var str = "abadfgf";
+    var reg = /a(?=b)/g;
+    var reg1 = /a(?!b)/g; //非
+    console.log(str.match(reg));
+
+
+
+    // 字符串去重
+    var str = "aaaaaaabbbbdddddlll";
+    var reg = /(\w)\1*/g;
+    console.log(str.replace(reg, function($, $1){
+      return $1;
+    }));
+
+
+    //将数字转换为科学记数法形式
+    // 如果存在小数，这从 . 将字符拆分为两组，匹配后在合并
+    var str = '100000000000';
+     //1. 从后往前查找
+     //2. 空后面跟着非单词边界 and 3的倍数为数字
+    var reg = /(?=(\B)(\d{3})+$)/g
+    console.log(str.replace(reg, '.'))
+  </script>
+</body>
+</html>

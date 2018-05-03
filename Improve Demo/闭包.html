@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>闭包的使用</title>
+</head>
+<body>
+  <ul id="testUL">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script type="text/javascript">
+    var nodes = document.getElementsByTagName("li");
+    for(var i=0; i<nodes.length; i++){
+      // 正确
+      nodes[i].onclick = (function(i){
+        return function(){
+          console.log(i)；
+        }
+      })(i)
+
+      /*nodes[i].onclick = function(){
+        console.log(i);//如果不实用闭包，值每次都是4
+      }*/
+      
+    }
+  </script>
+</body>
+</html>

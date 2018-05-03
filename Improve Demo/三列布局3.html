@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>三列中间自适应的布局-圣杯布局</title>
+  <style type="text/css">
+  /*
+  负left/right 和  负margin-left
+  */
+    .container{
+      padding:0 300px 0 200px;
+    }
+    .main, .left, .right{
+      min-height: 150px;
+      float:left;
+      position: relative;
+    }
+    .left{
+      background-color: green;
+      width: 200px;
+      /*负的margin-left会让元素沿文档流向左移动，如果负的数值比较大就会一直移动到上一行。*/
+      margin-left: -100%;
+      left:-200px;
+    }
+    .main{
+      background-color: blue;
+      width: 100%;
+    }
+    .right{
+      background-color: red;
+      width:300px;
+      margin-left: -300px;
+      right:-300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"> 
+　　<div class="main">main</div> 
+　　<div class="left">left</div> 
+　　<div class="right">right</div> 
+  </div>
+</body>
+</html>

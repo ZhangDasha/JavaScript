@@ -6,16 +6,23 @@
 </head>
 <body>
 	<script type="text/javascript">
+		/*
+			性能：
+				最坏情况：O(n*logn)
+				最好情况：O(n)
+				平均性能：O(n*logn)
+				空间复杂度：O(logn)
+		*/
 		function quickSort(arr){
 			if(arr.length <= 1){
 				return arr;
 			}
 			//取得基准点，并把基准点从数组中剔除
 			var midIndex = Math.floor(arr.length/2);
-			var midValue = arr.splice(midIndex,1);
+			var midValue = arr.splice(midIndex, 1);			//	取得下标为midIndex值，并将其剔除数组
 			//定义左右两个空数组，左边值小于基准点，右边反之
-			var left=[],right=[];
-			for(var i=0; i<arr.length;i++){
+			var left=[], right=[];
+			for(var i=0; i<arr.length; i++){
 				if(arr[i] <= midValue){
 					left.push(arr[i]);
 				}else{
@@ -23,10 +30,18 @@
 				}
 			}
 			//递归执行以上操作,对左右两个数组进行操作，直到数组长度为<=1
-			return quickSort(left).concat(midValue,quickSort(right));
+			return quickSort(left).concat(midValue, quickSort(right));
 			
 		}
-		var a = [21,33,2,45,12,23];
+		// var a = [21,33,2,45,12,23];
+		function randomArr(){
+			var arr = [];
+			for(var i=0; i<=20; i++)
+				arr.push(i);
+			arr.sort(() => Math.random()-0.5);
+			return arr;
+		}
+		var a = randomArr();
 		alert(quickSort(a));
 	</script>
 </body>

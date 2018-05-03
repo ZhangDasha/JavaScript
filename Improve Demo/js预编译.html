@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    
+  </style>
+</head>
+<body>
+  <div>
+    <h2>简记</h2>
+    <p>函数声明整体提升， 变量只是声明提升</p>
+    <p>预编译发生在函数执行的前一刻</p>
+    <h3>预编译四部曲</h3>
+    <ol>
+      <li>创建AO对象---执行期上下文</li>
+      <li>将形参的名，变量声明的名做为AO对象的属性写入。值为undefined</li>
+      <li>将实参值和形参值统一</li>
+      <li>在函数体里找函数声明，将值改为函数体</li>
+    </ol>
+    <h3>typeof返回的类型</h3>
+    <p>一般情况下带数学符号的隐私转换，<strong>倾向于转换为数字类型</strong>，无法转换的也会转换为 NaN </p>
+    <ol>
+      <li>string</li>
+      <li>object</li>
+      <li>undefined</li>
+      <li>function</li>
+      <li>boolean</li>
+      <li>number</li>
+    </ol>
+  </div>
+  <script type="text/javascript">
+
+    /*
+      var a = 123;
+      alert(a); ==> alert(window.a);
+    */
+
+
+    /*
+    GO{
+      b:123
+    }
+    function test(){
+      var a = b = 123;
+    }
+    test();
+    AO{
+      a:undefined
+    }
+    window.b = 123;
+    window.a = undefined;*/
+
+
+/*
+    function fn(a){
+      console.log(a);   //function a
+      var a = 123;   //==> var a; a = 123;
+      console.log(a);   //123
+      function a() {}  // X 这句话会在预编译阶段提升上去
+      console.log(a);   //123
+      var b = function(){}  //==> var b; b=function(){};
+      console.log(b);   //function 
+      function d(){}
+    }
+    fn(1);
+    // AO{
+    //   a:function a(){},
+    //   b:undefined,
+    //   d:function d(){}
+    // }
+
+*/
+
+
+
+/*
+    function test(a, b){
+      console.log(a);   //1
+      console.log(b);   //function b(){}
+      c = 0;
+      var c;  // X
+      a = 3;
+      b = 2;
+      console.log(b);     //2
+      function b(){}  // X
+      function d(){}  // X
+      console.log(b);     //2
+    }
+    test(1);
+    // AO{
+    //   a:1,
+    //   b:function b(){},
+    //   c:undefined,
+    //   d:function d(){}
+    // }
+
+*/
+
+
+/*
+    function test(a, b) {
+      console.log(a);   //function a(){}
+      console.log(b);   //undefined
+      var b = 234;
+      console.log(b);   //234
+      a = 123;
+      console.log(a);   //123
+      function a(){}  // X
+      var a;    // X
+      b = 345;
+      var b = function(){}
+      console.log(a);   //123
+      console.log(b);   //function (){}
+    }
+    test(1);
+    // AO{
+    //   a:function a(){},
+    //   b:undefined,
+    // }
+
+*/
+
+
+/*
+    console.log(a);   //function a(){}
+    console.log(b);   //undefined
+    var a = 123;
+    var b = 234;
+    function a(){
+      function b(){}
+    }
+    console.log(b);   //234
+    console.log(a);   //123
+    // GO{
+    //   a:undefined
+    // }
+
+*/
+
+
+
+/*
+    global = 100;
+    function fn(){
+      console.log(global);  //undefined
+      global = 200;
+      console.log(global);    //200
+      var global = 300;
+      console.log(global);    //300
+    }
+    fn();
+    var global;
+
+*/
+
+
+
+/*
+    GO{
+      a:undefined,
+      test:function,
+      c:234
+    }
+    function test(){
+      console.log(b);   //undefined
+      if(a){  //->  a=undefined
+        var b = 100;
+      }
+      console.log(b);   //因为a=undefined,所以b=undefined
+      c = 234;
+      console.log(c);   //234
+    }
+    var a;
+    test();
+    AO{
+      b:undefined,
+    }
+    a = 10;
+    console.log(c);   //234
+
+*/
+
+
+
+
+/*
+    // GO{
+    //   a:100,
+    //   demo:function(){}
+    //   f:123
+    // }
+    a = 100;
+    function demo(e){
+      console.log(e);   //function e
+      function e(){}
+      arguments[0] = 2;
+      console.log(e);    //2
+      if(a){
+        var b = 123;
+        function c(){}
+      }
+      var c;
+      a = 10;
+      var a;
+      console.log(b);  //undefined
+      f = 123;
+      console.log(c);  //undefiend
+      console.log(a);  //10
+    }
+    var a;
+    demo(1);
+    // AO{
+    //   e:function e(){},
+    //   b:undefined,
+    //   c:undefined,
+    //   a:undefined
+    // }
+    console.log(a);  //100
+    console.log(f);  //123
+*/
+
+
+
+/*
+    var str = false + 1;
+    console.log(str);    //1
+    var demo = false == 1;    //false
+    console.log(demo);
+    if(typeof(a) && -true + (+undefined) + ""){   //+undefined -> NaN;
+      console.log('基础扎实');
+    }
+    if(11 + "11"*2 == 33){
+      console.log('基础扎实');
+    }
+    !!" " + !!"" - !!false || console.log('kkk');   // !! -> 转换为boolean
+*/
+
+
+
+
+
+
+    (window.foo || (window.foo = 'bar'));
+    // '||'的优先级大于 '=',所以后面的赋值语句需要加括号
+    // 又因为括号的优先级高，所以先执行后面的语句
+    console.log(window.foo); //bar
+
+
+
+
+  </script>
+</body>
+</html>

@@ -6,17 +6,19 @@
 </head>
 <body>
 	<script type="text/javascript">
-		//
-		var mergeSort = function(arr){
-			var left=[],right = [];
+		/*
+			牺牲空间换取空间
+		*/
+		var mergeSort = function(arr) {
+			var left=[], right = [];
 			if(arr.length <= 1){
 				return arr;
 			}else{
 				var midIndex = Math.floor(arr.length/2);
-				var left = arr.slice(0,midIndex);
-				var right = arr.slice(midIndex,arr.length);
+				var left = arr.slice(0, midIndex);		//拆分数组
+				var right = arr.slice(midIndex, arr.length);
 			}
-			return merge(mergeSort(left),mergeSort(right));
+			return merge(mergeSort(left), mergeSort(right));
 		}
 		function merge(left,right){
 			var result = [];
@@ -30,7 +32,15 @@
 			}
 			return result.concat(left).concat(right);
 		}
-		var a = [21,33,2,45,12,23];
+		// var a = [21,33,2,45,12,23];
+		function randomArr() {
+			var arr = [];
+			for(var i=0; i<20; i++)
+				arr.push(i);
+			arr.sort(() => Math.random()-0.5);
+			return arr;
+		}
+		var a = randomArr();
 		alert(mergeSort(a));
 	</script>
 </body>

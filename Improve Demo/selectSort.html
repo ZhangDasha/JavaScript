@@ -7,10 +7,15 @@
 <body>
 	<script type="text/javascript">
 		//选择排序的思想是：把每一个数都与第一个数比较，如果小于第一个数，就把它们交换位置；这样一轮下来，最小的数就排到了最前面；重复比较n-1轮，就实现了选择排序.把最小的数放在最前面
+		/*
+			性能：
+				时间上是O(n^2) 且不论任何情况. 空间上是O(1) 就相当于基本不会
+		*/
 		var selectSort = function(arr){
 			var len = arr.length;
-			for(var i=0;i<len-1;i++){
-				for(var j=i+1;j<len;j++){
+			for(var i=0; i<len-1; i++){
+				// 因为左边都是已排序好的
+				for(var j=i+1; j<len; j++){			//j的初始值为 i+1 ；i的后一个数开始
 					if(arr[i] > arr[j]){
 						var temp = arr[i];
 						arr[i] = arr[j];

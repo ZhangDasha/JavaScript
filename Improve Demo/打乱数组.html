@@ -7,10 +7,11 @@
 <body>
 	<script type="text/javascript">
 		var arr = [1,2,3,4,5,6];
-		function fn(a,b){
+		/*function fn(a,b){
 			return Math.random()>0.5?-1:1;		//产生一个随机数若大于0.5返回-1
 		}
-		console.log(arr.sort(fn));
+		console.log(arr.sort(fn));*/
+    console.log(arr.sort(() => Math.random()-0.5));
 	</script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  .disc{
+    position: absolute;
+    width:100px;
+    height:100px;
+    background-color: #0ef;
+    border-radius:50%;
+    /*以上画圆*/
+    cursor: pointer;
+
+    left:50px;
+    top:50px;
+    line-height: 100px;
+    text-align:center;
+
+    color:white;
+  }
+</style>
+<body>
+  <div class="disc">请点击</div>
+  <script type="text/javascript">
+    document.onclick = function(e) {
+      var radius = 50;
+      var x1=100,y1=100,x2= e.clientX;y2= e.clientY;  
+      var len=Math.abs(Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));  
+      if(len <= radius)
+        alert("在圆内");
+      else
+        alert("在圆外");
+    }
+  </script>
+</body>
+</html>

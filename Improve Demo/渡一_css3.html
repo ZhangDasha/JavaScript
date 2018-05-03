@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css3样式</title>
+  <link rel="stylesheet" type="text/css" href="渡一_css3.css">
+  <style type="text/css">
+    h3{
+      font-weight: bold;
+      color:red;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h3>!important > 行间样式 > id > （class = 属性选择器）  > 标签选择器 > 通配符</h3>
+    <h3>权重：</h3>
+    <p>权重为256进制</p>
+    <p>在计算机中 infinity+1 > infinity</p>
+    <ol>
+      <li>!important<mark>Infinity</mark></li>
+      <li>行间样式<mark>1000</mark></li>
+      <li>id<mark>100</mark></li>
+      <li>class | 属性选择器 | 伪类选择器<mark>10</mark></li>
+      <li>标签选择器 | 伪元素选择器<mark>1</mark></li>
+      <li>通配符<mark>0</mark></li>
+    </ol>
+    <hr>
+    <h3>分辨率：屏幕每英寸所能容纳的垂直像素点数</h3>
+    <p>em为相对单位 公式为： 1em = 1 * font-size</p>
+    <hr>
+    <h3>1.行级元素</h3>
+    <p>内容决定元素所占位置，不可以通过css改变宽高</p>
+    <em>span, em, i, select, a, strong, mark </em>
+    <em>
+      <mark>凡事带有inline的都有文字特性</mark>
+    </em>
+    <h3>2.块级元素</h3>
+    <p>独占一行，可以通过css改变宽高</p>
+    <em>div, p, ul, li, ol, h,</em>
+    <h3>3.行级块元素</h3>
+    <p>内容决定大小，默认不换行，可以改宽高</p>
+    <em>img, button, input,</em>
+    <h3>4.空元素</h3>
+    <em>br, hr, ..</em>
+    <hr>
+    <h1>三大模型：盒模型，层模型， 浮动模型</h1>
+    <h3>盒子模型</h3>
+    <p>盒子模型宽度：width + (pading-left + pading-right) + (border-left+border-right) + (margin-left+margin-right)</p>
+    <p>可视区(一般不包括margin)宽度：width + (pading-left + pading-right) + (border-left+border-right)</p>
+    <hr>
+    <mark>body默认有8px 的 margin</mark><br>
+    <mark>left/right/top/bottom常常配合定位出现</mark>
+    <h3>层模型---绝对定位</h3>
+    <p>脱离原来位置进行定位，当一个元素是absolute时就会脱离原来的层面，这样就会发生元素叠加现象</p>
+    <h3>relative 定位</h3>
+    <p>保留原来位置进行定位。也会脱离原来的层面，但是原来占有的位置并不会释放</p>
+    <div style="text-decoration: underline;">
+      <p>absolute相对于最近的有定位的父级元素进行定位，若没有则相对于文档进行定位</p>
+      <p>relative相对于原来出生位置进行定位</p>
+    </div>
+    <p>一般情况用relative来保存位置作参照，用absolute进行定位</p>
+    <hr>
+    <h3>BFC -- 块级格式上下文，能改变盒子里的语法规则</h3>
+    <p>如何处发BFC</p>
+    <ol type="1">
+      <li>position:absolute</li>
+      <li>display:inline-block</li>
+      <li>float:left/right</li>
+      <li>overflow:hidden</li>
+    </ol>
+    <hr>
+      <h3>float模型</h3>
+      <p>浮动可让元素站队，若父元素可容纳则横向排列，若无法容纳则另起一行</p>
+      <mark>浮动元素产生了浮动流，所有产生了浮动流的<i>元素块级元素</i>看不到他们，但还是产生了BFC的元素和文本类属性(inline)以及文本都能看到浮动元素
+      </mark>
+      <p><i>如果希望父级元素包裹浮动元素-----清除浮动</i></p>
+      <hr>
+      <h3>伪元素--一般针对于元素内部文本，相较于正常元素，伪元素没有元素结构</h3>
+      <em>伪元素天生存在，我们只是通过css将它选中。</em>
+      <p>伪元素配合content使用。</p>
+      <p>伪元素存在于任意一个标签里面,常见伪元素：</p>
+      <ol>
+        <li>after</li>
+        <li>before</li>
+        <li>first-letter</li>
+        <li>first-line</li>
+      </ol>
+      <hr>
+      <p>当元素被设置为position:absolute或float:left/right内容会自动把元素转换为inline-block</p>
+  </div>
+
+
+    <!-- 父子选择器
+    <div>
+      <div class="wrapper">
+        <strong class="box">
+          <em>234</em>
+        </strong>
+      </div>
+    </div>
+    <em>234</em> 
+  -->
+
+
+  <!-- 并列选择器
+  <div>1</div>
+  <div class="demo">2</div>
+  <p class="demo">3</p> -->
+
+
+ <!-- 权重
+  <div class="classDiv" id="idDiv">
+    <p class="classP" id="idP">1</p>
+  </div>   -->
+
+
+  <!-- 利用border画三角形 / 梯形
+    <div class="box"></div> -->
+
+
+    <!-- 盒子居中
+    <div class="wrapper">
+        <div class="content"></div>
+    </div>   -->
+
+
+    <!-- absolute / relative
+    <div class="demo"></div>
+    <div class="box"></div>
+
+    <div class="wrapper">
+      <div class="content">
+        <div class="box"></div>
+      </div>
+    </div> -->
+
+
+    <!-- 居中
+      <div id="box"></div> -->
+
+
+
+    <!-- 奥运五环
+    <div class="plat">
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+    </div> -->
+
+
+
+    <!--上下margin塌陷问题: 垂直方向父子margin会重合，然后去最大值
+    1.
+     <div class="wraper">
+        <div class="box"></div>
+    </div>   -->
+    
+    <!-- 兄弟元素margin合并问题
+    <div class="demo1">1</div>
+    <div class="wrapper">
+      <div class="demo2">2</div>
+    </div>   -->
+    
+
+
+    <!--1. 清除浮动
+    <div class="wrapper">
+      <div class="content">1</div>
+      <div class="content">2</div>
+      <div class="content">3</div>
+      <p></p>
+    </div> -->
+
+
+    <!-- 伪元素
+      <span>你好</span> -->
+
+<!-- 2. 利用伪元素清除浮动
+    <div class="wrapper">
+      <div class="content">1</div>
+      <div class="content">2</div>
+      <div class="content">3</div>
+    </div>  -->
+
+
+    <!-- 
+      <p id="demo">单行文本溢出处理!!!单行文本溢出处理!!!单行文本溢出处理!!!</p> -->
+    
+
+    <mark>块级元素可以嵌套任何元素，行级元素只能嵌套行级元素</mark>
+    <p>特别的<mark>p</mark>元素不能嵌套<mark>div</mark>元素</p>
+
+
+    
+</body>
+</html>

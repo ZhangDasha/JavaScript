@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>input事件属性</title>
+</head>
+<body>
+  <input type="text" name="username" value="请输入用户名" onfocus="if(this.value=='请输入用户名'){
+    this.value=''}" onblur="if(this.value=='') {this.value='请输入用户名'}"/>
+</body>
+</html>

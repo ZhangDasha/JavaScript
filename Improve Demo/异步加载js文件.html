@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>动态创建DOM加载js文件</title>
+</head>
+<body>
+  <div>
+      <h3>异步加载js文件</h3>
+      <ol type="I">
+        <li>defer属性，适用于IE，在页面dom解析完成后才开始执行，可引入外部文件也可以直接在script标签內写</li>
+        <li>async属性， 适用于w3c，js文件一旦下载完毕就执行，只能载入外部文件</li>
+        <li>动态创建DOM加载js文件</li>
+      </ol>
+  </div>
+  <script type="text/javascript">
+    function loadScript(url, callback){
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      // IE
+      if(script.readyState){
+        script.onreadystatechange = function(){
+          if(script.readyState == "complete" || script.readyState == "loaded"){
+            // callback();
+            tools[callback]();
+          }
+        }
+      }else{
+        // w3c
+        script.onload = function(){
+          // callback();
+          tools[callback]();
+        }
+      }
+      script.src = url;
+      // 上面的代码只会下载js文件，只有添加上这条代码后才会解析js代码
+      document.head.appendChild(script);
+    }
+    /* callback()方法一 利用函数
+    // loadScript('jsDemo.js', 'test()')     test() is not defined;
+      loadScript('jsDemo.js', function(){
+        test();
+    });*/
+
+    // 方法二  对象的形式定义方法
+    loadScript('异步加载js文件.js', "demo");
+  </script>
+</body>
+</html>

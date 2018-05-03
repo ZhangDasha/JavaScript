@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>判断事件是拖还是点击</title>
+</head>
+<body>
+  <div style="width:100px; height:100px; background-color: red"></div>
+</body>
+<script type="text/javascript">
+  var firstTime = 0;
+  var lastTime = 0;
+  var key = false;
+  document.onmousedown = function(){
+    firstTime = new Date().getTime();
+  }
+  document.onmouseup = function(){
+    lastTime = new Date().getTime();
+    if(lastTime- firstTime < 300)
+      key = true;
+  }
+  // onclick = onmousedown + onmouseup
+  document.onclick = function(){
+    if(key){
+      console.log('click')
+      key = false;
+    }else{
+      console.log('drag');
+      key = true;
+    }
+  }
+</script>
+</html>

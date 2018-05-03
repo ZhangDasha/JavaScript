@@ -6,10 +6,21 @@
 </head>
 <body>
 	<script type="text/javascript">
-		var bubbleSorrt = function(arr){
-			for(var i=0;i<arr.length;i++){
+		/*
+			冒泡排序与选择排序的区别 ？
+				   冒泡排序每次第j项与第j+1项比较
+					 选择排序每次第i项与第j项比较
+			性能：
+				最坏情况：O(n^2)
+				最好情况：O(n)
+				平均性能：O(n^2)
+				空间复杂度：O(1)
+		*/
+		var bubbleSort = function(arr){
+			for(var i=0; i<arr.length; i++){
 				//每一次比较都会找打最大值并移到数组右边,因此下次比较只需要比前arr.length-1-i次。
-				for(var j=0; j<arr.length-1-i; j++){   
+				// 因为右边都是已排序好的，所以j的取值范围0到arr.length-i-1
+				for(var j=0; j<arr.length-1-i; j++){     
 					if(arr[j] > arr[j+1]){               //相邻元素两两比较
 						var temp = arr[j];
 						arr[j] = arr[j+1];
@@ -19,8 +30,16 @@
 			}
 			return arr
 		}
-		var a = [21,33,2,45,12,23];
-		alert(bubbleSorrt(a));
+		// 生成随机数组
+		function randomArr(){
+			var arr = [];
+			for(var i=0; i<50; i++)
+				arr.push(i);
+			arr.sort(() => Math.random()-0.5);
+			return arr;
+		}
+		let arr2 = randomArr();
+		alert(bubbleSort(arr2));
 	</script>
 </body>
 </html>

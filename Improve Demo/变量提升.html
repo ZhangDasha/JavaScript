@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>变量提升提升的是声明，但并不进行赋值</title>
 </head>
 <body>
 	<script type="text/javascript">
 
 /*
-	function a(){};
+	function a(){return true;};
 	var a = 1;			// 等于	var a;	a = 1;
 	//若前面已经定义a，则a会被存入变量表中，当执行var a时，查找变量表已存在a则忽略此行；又因为js是无类型弱语言，所以a=1成立。
 	console.log(a);			// 1
@@ -16,7 +16,7 @@
 	
 /*
 	var a = 1;
-	function a(){};
+	function a(){return true;};
 	console.log(a);				// 1
 */
 
@@ -35,10 +35,17 @@
 */
 
 
-	var a ;
-	function a(){};
+/*	var a ;
+	function a(){return true;};
 	a = 123;
 	console.log(a);				//123
+*/
+
+	/*
+		综上：
+			当变量和函数同名且都定义时，变量的访问优先级高；
+			当变量和函数同名且都只声明时，函数的访问优先级高
+	*/
 	</script>
 </body>
 </html>

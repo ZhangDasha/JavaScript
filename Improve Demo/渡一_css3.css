@@ -1,0 +1,335 @@
+
+/*
+父子选择器/派生选择器
+*/
+/*div strong em{
+  background-color: red;
+}*/
+/*父子选择器不一定是标签*/
+/*.wrapper .box em{
+  color:blue;
+}*/
+/*父子选择器也可是子孙关系*/
+/*.wrapper em{
+  font-size: 24px;
+}*/
+
+
+/*
+直接子元素选择器
+*/
+/*div > em{
+  background-color: green;
+}*/
+
+/*
+并列选择器
+无空格
+标签选择器与id选择器合用时，标签要写前面
+*/
+/*div.demo{
+  background-color: red;
+}*/
+
+
+
+/*
+权重
+若权重一样后面的会覆盖前面的代码
+在计算机中 infinity+1 > infinity
+*/
+/*#idDiv p{
+  background-color: red;
+}
+.classDiv .classP{
+  background-color: green;
+}*/
+
+
+
+
+/*
+利用border画三角形 / 梯形
+transparent 透明色
+border ： --->  border-width + border-style + border-color
+*/
+/*.box{
+  width: 10px;
+  height: 10px;
+  border: 100px solid transparent;
+  border-top-color:red;
+}*/
+
+
+/*
+盒子居中
+.wrapper, .content{
+  width: 100px;
+  height: 100px;
+}
+.wrapper{
+  background-color: red;
+  border: 10px;
+  padding: 100px;
+}
+.content{
+  background-color: green;
+}*/
+
+
+
+
+/**{
+  margin:0;
+  padding:0;
+}*/
+/*
+    absolute定位
+.demo{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  opacity: 0.5;
+}
+.box{
+  width: 200px;
+  height:200px;
+  background-color: red;
+}
+*/
+
+
+/*relative定位
+.demo{
+  position: relative;
+  top: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  opacity: 0.5;
+}
+.box{
+  width: 200px;
+  height:200px;
+  background-color: red;
+}
+
+
+.wrapper{
+  margin-left: 100px;
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+.content{
+  margin-left: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
+.box{
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+}
+*/
+
+
+/*居中
+因为是相对于div的左上角进行定位，要实现完全居中需要利用负margin移动半个身位
+#box{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  left: 50%;
+  top: 50%;
+  margin-top:-50px;
+  margin-left: -50px;
+}*/
+
+
+
+
+/*
+
+因为plat容器的内容是脱离层的，所以plat的height为0，需手动设置
+*/
+
+/*.plat{
+  position: absolute;
+  height:186px;
+  width: 380px;
+  left:50%;
+  top: 50%;
+  margin-left: -190px;
+  margin-top: -93px;
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4,
+.circle5{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border:10px solid black;
+  border-radius: 50%;
+}
+
+.circle1{
+  border-color:black;
+  left: 0;
+  top: 0;
+}
+.circle2{
+  border-color: green;
+  left:130px;
+  top:0;
+  z-index: 3
+}
+.circle3{
+  border-color: yellow;
+  left:260px;
+  top: 0;
+}
+.circle4{
+  border-color: blue;
+  left: 65px;
+  top: 70px;
+}
+.circle5{
+  border-color:purple; 
+  left:205px;
+  top: 70px;
+}
+*/
+
+
+/*上下margin塌陷问题: 垂直方向父子margin会重合，然后取最大值
+解决方法：
+  1.给父元素添加属性：border-top属性
+  2.让父级元素编程BFC
+*/
+/*1.
+.wraper{
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  margin-top: 50px;
+  margin-left: 50px;
+  overflow: hidden;
+}
+.box{
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  margin-top: 50px;
+}*/
+
+/*兄弟元素margin合并问题---允许存在
+  给其中一个兄弟添加父元素,使其父元素变为BFC
+*/
+/*.demo1{
+  background-color: red;
+  margin-bottom: 100px;
+}
+.demo2{
+  background-color: black;
+  margin-top: 100px;
+}
+.wrapper{
+  overflow: hidden;
+}*/
+
+
+
+
+/* 如果希望父级元素包裹浮动元素-----清除浮动*/
+/*
+.wrapper{
+  border:1px solid black;
+}
+.content{
+  float: left;
+  color: #fff;
+  background-color: black;
+  width: 100px;
+  height: 100px;
+}
+.wrapper p{
+  border-top:0 solid green;
+  clear: both;
+}
+*/
+
+
+
+
+
+/*伪元素
+span::before{
+  content:"daSha";
+}
+span::after{
+  content:"666";
+}
+*/
+
+
+
+/*利用伪元素清除浮动
+.wrapper::after{
+  content:"";
+  display:block;
+  clear:both;
+}
+.wrapper{
+  border:1px solid black;
+}
+.content{
+  float: left;
+  color: #fff;
+  background-color: black;
+  width: 100px;
+  height: 100px;
+}
+.wrapper p{
+  border-top:0 solid green;
+  clear: both;
+}
+*/
+
+
+
+/*单行文本溢出处理
+#demo{
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

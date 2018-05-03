@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>drag</title>
+</head>
+<body>
+  <div style="width:100px; height:100px; background-color:red; top:0; left:0; position: absolute;"></div>
+  <script type="text/javascript">
+    var div = document.getElementsByTagName('div')[0];
+    var disX,
+        disY;
+    div.onmousedown = function(e){
+      disX = e.pageX - parseInt(div.style.left);
+      disY = e.pageY - parseInt(div.style.top);
+      
+      document.onmousemove = function(e){
+        var event = e || window.event;
+        // var target = event.target || event.srcElement;
+        div.style.left =event.pageX - disX + 'px';
+        div.style.top = event.pageY - disY + 'px';
+      }
+      document.onmouseup = function(){
+        div.onmousemove = null;
+      }
+      // div.addEventListener('click', function(){
+      //   alert("a");
+      // }, false)
+    }
+  </script>
+</body>
+</html>
